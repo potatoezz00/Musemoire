@@ -3,39 +3,186 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Musemoire</title>
+  <title>Musemoire — Women's Fashion Magazine</title>
+  <meta name="description" content="Musemoire — a soft-palette women's fashion editorial inspired by modern magazine design." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 48px; color:#0f172a; background: #fbfdff; }
-    header { display:flex; align-items:center; gap:16px; }
-    h1 { margin:0; color:#0b5fff; font-size:2rem; }
-    .tag { color:#64748b; font-size:0.9rem; }
-    .card { margin-top:24px; padding:18px; border-radius:10px; background:#ffffff; box-shadow:0 6px 18px rgba(11,95,255,0.04); border: 1px solid #eef2ff; }
-    a.button { display:inline-block; margin-top:12px; padding:8px 14px; background:#0b5fff; color:#fff; text-decoration:none; border-radius:8px; }
-    footer { margin-top:36px; color:#64748b; font-size:0.9rem; }
-    pre { background:#0f172a10; padding:12px; border-radius:8px; overflow:auto; }
+    :root{
+      --pink: #ffd7e7;   /* baby pink */
+      --butter: #fff1a8; /* butter yellow */
+      --accent: #ff9fc6;
+      --deep: #1f1b2e;   /* dark text */
+      --muted: #6b6b78;
+      --card: #ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:'Poppins',system-ui,Arial,sans-serif;
+      margin:0;
+      color:var(--deep);
+      background:linear-gradient(180deg,#fff 0%, #fff 60%);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Header */
+    header{
+      background:linear-gradient(90deg,var(--pink) 0%, var(--butter) 100%);
+      padding:18px 6%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid rgba(31,27,46,0.04);
+    }
+    .brand{display:flex;align-items:center;gap:18px}
+    .logo{font-family:'Playfair Display',serif;font-size:30px;color:var(--deep);letter-spacing:1px}
+    nav a{margin:0 12px;color:var(--deep);text-decoration:none;font-weight:600;font-size:14px}
+    .cta{background:var(--deep);color:#fff;padding:8px 14px;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;padding:48px 6%;align-items:center}
+    .hero-left h1{font-family:'Playfair Display',serif;font-size:56px;margin:0 0 12px;color:var(--deep);line-height:1}
+    .eyebrow{font-weight:700;color:var(--deep);letter-spacing:1px}
+    .byline{color:var(--muted);margin-bottom:18px}
+    .lead{font-size:18px;color:var(--deep);max-width:640px;margin:0}
+    .subscribe{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+    .email{padding:12px;border-radius:10px;border:1px solid #eee;min-width:220px}
+    .sub-btn{background:var(--deep);color:#fff;border:none;padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+
+    .hero-right{background:rgba(255,255,255,0.7);border-radius:12px;padding:18px;box-shadow:0 10px 40px rgba(31,27,46,0.06)}
+    .cover{width:100%;height:340px;border-radius:8px;background-size:cover;background-position:center;display:block}
+    .issue{margin-top:12px;font-weight:700}
+
+    /* Features grid */
+    .features{padding:36px 6%;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(31,27,46,0.04);border:1px solid #fafafa}
+    .card img{width:100%;height:220px;object-fit:cover;display:block}
+    .meta{padding:14px}
+    .card h3{margin:0 0 8px;font-family:'Playfair Display',serif;font-size:20px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Editorial + sidebar */
+    .editorial{padding:36px 6%;display:flex;gap:24px}
+    .editorial .main{flex:2}
+    .editorial .side{flex:1}
+    .article{background:linear-gradient(180deg,rgba(255,255,255,1),rgba(255,255,255,0.98));padding:18px;border-radius:10px;box-shadow:0 8px 30px rgba(31,27,46,0.03)}
+
+    /* Footer */
+    footer{padding:28px 6%;border-top:1px solid #f3f3f6;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+    /* Small screens */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr;padding:32px 6%}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .hero-right{order:2}
+    }
+    @media(max-width:640px){
+      .features{grid-template-columns:1fr}
+      header{padding:16px}
+      .logo{font-size:22px}
+      .hero-left h1{font-size:34px}
+      .hero-right{display:none} /* hide right panel on tiny screens for clarity */
+    }
+
+    /* small stylistic touches */
+    .muted{color:var(--muted)}
+    .eyebrow-pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,0.03);font-weight:700}
   </style>
 </head>
 <body>
   <header>
-    <h1>Musemoire</h1>
-    <span class="tag">— A simple HTML project</span>
+    <div class="brand">
+      <div class="logo">Musemoire</div>
+      <nav aria-label="Main navigation">
+        <a href="#">Fashion</a>
+        <a href="#">Beauty</a>
+        <a href="#">Culture</a>
+        <a href="#">Life</a>
+      </nav>
+    </div>
+    <div>
+      <a class="cta" href="#subscribe">Subscribe</a>
+    </div>
   </header>
 
-  <div class="card">
-    <p>Welcome to Musemoire — this is a starter page for your project. Replace or expand this file with your own HTML, images and styles.</p>
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <div class="eyebrow eyebrow-pill">Fall 2025 • Issue 01</div>
+        <h1 id="hero-heading">Where Style Meets Story — Modern Elegance in Pastels</h1>
+        <div class="byline">Curated looks, interviews and features celebrating womxn's creativity.</div>
+        <p class="lead">Musemoire is a fashion-forward editorial exploring runway trends, timeless silhouettes, and the people shaping the industry. This issue centers on baby pink and butter yellow palettes reimagined for bold, sophisticated dressing.</p>
 
-    <h3>Quick links</h3>
-    <ul>
-      <li>Edit this file to change the homepage.</li>
-      <li>Add other pages (about.html, contact.html) and link to them.</li>
-      <li>Commit and push to the <code>main</code> branch to update the site.</li>
-    </ul>
+        <div class="subscribe" id="subscribe" aria-label="Subscription form">
+          <input class="email" type="email" placeholder="Enter your email" aria-label="Email address">
+          <button class="sub-btn">Join</button>
+        </div>
+      </div>
 
-    <a class="button" href="https://github.com/potatoezz00/Musemoire" target="_blank" rel="noreferrer">Open repo on GitHub</a>
-  </div>
+      <aside class="hero-right" aria-labelledby="cover-heading">
+        <div class="cover" id="cover-heading" role="img" aria-label="Cover image" style="background-image:url('https://images.unsplash.com/photo-1520975917435-9186e8b9b6a5?q=80&w=1200&auto=format&fit=crop');"></div>
+        <div class="issue">Editor's Cover Story: The Palette of Confidence</div>
+        <div class="muted" style="font-size:14px;margin-top:8px">Photography by Anna L. • Styling by K. Rosario</div>
+      </aside>
+    </section>
+
+    <section class="features" aria-label="Featured articles">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1600&auto=format&fit=crop" alt="Pastel runway">
+        <div class="meta">
+          <h3>Soft Power: Pastels on the Runway</h3>
+          <p>Designers embrace baby pink and butter yellow to redefine strength with softness.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1520962913008-5f2b8d6fb3c7?q=80&w=1600&auto=format&fit=crop" alt="Designer at work">
+        <div class="meta">
+          <h3>Interview: A New Designer on the Block</h3>
+          <p>We speak with emerging talent about craft, sustainability, and heritage.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1544986581-efac024faf62?q=80&w=1600&auto=format&fit=crop" alt="Beauty edit">
+        <div class="meta">
+          <h3>Beauty Edit: Dewy Skin Essentials</h3>
+          <p>Products and routines to capture a soft, luminous look for every occasion.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="editorial" aria-label="Editorial and sidebar">
+      <div class="main">
+        <div class="article" aria-labelledby="feature-heading">
+          <h2 id="feature-heading" style="font-family:'Playfair Display',serif;margin-top:0">Feature — The Pastel Revival</h2>
+          <p class="muted">From Paris runways to independent ateliers, pastel colorways are reclaiming a place in luxury. We visited designers who shared their process and inspiration.</p>
+          <p style="margin-top:12px">Read on for a deep dive into fabric choices, editorial shoots, and the cultural conversations these soft hues are starting.</p>
+        </div>
+      </div>
+
+      <aside class="side">
+        <div class="article">
+          <h4 style="margin-top:0">Style Guide</h4>
+          <p class="muted" style="font-size:14px">How to mix baby pink and butter yellow without losing sophistication—layer textures, balance neutrals, and use accents sparingly.</p>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="article">
+          <h4 style="margin-top:0">Subscribe</h4>
+          <p class="muted" style="font-size:14px">Get issue drops, behind-the-scenes, and exclusive offers—delivered monthly.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
 
   <footer>
-    <p>Deployed as a GitHub Pages project site at <strong>https://potatoezz00.github.io/Musemoire</strong></p>
+    <div>© 2025 Musemoire • Crafted with care</div>
+    <div>
+      <a href="#" class="muted" style="text-decoration:none;margin-right:12px">Instagram</a>
+      <a href="#" class="muted" style="text-decoration:none">Contact</a>
+    </div>
   </footer>
 </body>
 </html>
